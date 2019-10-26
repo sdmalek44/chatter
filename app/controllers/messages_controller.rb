@@ -5,6 +5,8 @@ class MessagesController < ApplicationController
     @message = Message.new(message_params)
     @message.user = current_user
     @message.save
+
+    redirect_to root_path
   end
 
   private
