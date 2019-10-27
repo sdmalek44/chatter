@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-RSpec.describe MessagesController, type: :controller do
+RSpec.describe HomeController, type: :controller do
   render_views
 
-  describe 'POST create' do
+  describe 'GET index' do
     let(:user) { User.create(email: 'tim@tim.tim', password: 'timtim', password_confirmation: 'timtim') }
 
     before do
@@ -11,13 +11,10 @@ RSpec.describe MessagesController, type: :controller do
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
     end
 
-    it 'should successfully create a message' do
-      expect(Message.count).to eq(0)
+    it 'should return list of messages in html' do
+      get :index, format: :html
 
-      post :create, params: { message: { body: 'hello' } }
-
-      expect(response.status).to eq(302)
-      expect(Message.count).to eq(1)
+      expect(response).to be_success
     end
   end
 end
