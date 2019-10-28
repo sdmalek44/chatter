@@ -19,6 +19,7 @@ $ rails c
 (go to localhost:3000 in browser)
 
 * also can view on heroku https://chatter-0.herokuapp.com
+* FWIW currently on heroku the messages don't update without refreshing the page. works when run locally though
 
 ### How to use app
 
